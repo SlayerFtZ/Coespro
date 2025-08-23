@@ -12,7 +12,7 @@ import {
 } from "react-icons/bi";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
-  const [openSubmenu, setOpenSubmenu] = useState(false);
+  const [openSubmenu, setOpenSubmenu] = useState(null);
 
   const menuItems = [
     { name: "Inicio", icon: BiHome },
@@ -35,6 +35,15 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     { name: "Preguntas frecuentes", icon: BiUserVoice },
     { name: "Aviso de privacidad", icon: BiBell },
   ];
+
+  // Cierra el menú automáticamente en móviles
+  const handleMenuClick = (hasSubmenu, index) => {
+    if (hasSubmenu) {
+      setOpenSubmenu(openSubmenu === index ? null : index);
+    } else if (window.innerWidth < 640) {
+      toggleSidebar(); // Cierra en móvil
+    }
+  };
 
   return (
     <>
@@ -73,7 +82,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             return (
               <li key={index}>
                 <button
-                  onClick={() => hasSubmenu && setOpenSubmenu(openSubmenu === index ? null : index)}
+                  onClick={() => handleMenuClick(hasSubmenu, index)}
                   className="flex items-center w-full h-12 text-gray-500 transition-transform duration-200 ease-in transform hover:translate-x-2 hover:text-gray-800"
                 >
                   <span className="inline-flex items-center justify-center w-12 h-12 text-lg text-gray-400">
@@ -93,6 +102,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                       <li
                         key={subIndex}
                         className="flex items-center h-12 text-sm hover:text-blue-800"
+                        onClick={() => window.innerWidth < 640 && toggleSidebar()}
                       >
                         {subItem}
                       </li>
