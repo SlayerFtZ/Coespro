@@ -5,6 +5,7 @@ import TopBar from "./app/components/generals/topBar";
 import Footer from "./app/components/generals/footer";
 import AnimatedCard from "./app/components/generals/promo";
 import ServicesCarousel from "./app/site/components/generals/servicios";
+import CardSection from "./app/site/components/generals/cardsInfo";
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(true);
@@ -22,7 +23,7 @@ export default function App() {
         <div className="flex-1 p-8">
           {/* Promo */}
           <h1 className="mb-6 text-4xl font-bold text-gray-800">
-            Promo del mes
+            
           </h1>
           <AnimatedCard
             videoSrc={`${import.meta.env.BASE_URL}/video/promo.mp4`}
@@ -33,6 +34,8 @@ export default function App() {
           {/* Carrusel */}
           <h2 className="mt-12 mb-6 text-3xl font-bold text-gray-800"></h2>
           <ServicesCarousel />
+          <h2 className="mt-12 mb-6 text-3xl font-bold text-gray-800"></h2>
+          <CardSection></CardSection>
         </div>
       </div>
 
