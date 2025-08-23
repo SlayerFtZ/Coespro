@@ -1,15 +1,26 @@
 import { useState } from "react";
 
+import servicio1 from '/servicios/servicio1.jpg';
+import capacitacion1 from '/servicios/capacitacion1.jpg';
+import instalacion1 from '/servicios/instalacionServicio1.jpg';
+import asesoria1 from '/servicios/asesoria1.jpg';
+import soporte1 from '/servicios/soporteTecnico1.jpg';
+import material1 from '/servicios/marterial1.jpg';
+import instalacion2 from '/servicios/intalacionServicio2.jpg';
+import certificados from '/servicios/certificados.jpg';
+
 const teamMembers = [
-  { name: "Instalación", role: "Servicio", img: "../../../../../public/servicios/servicio1.jpg" },
-  { name: "Capacitacion de intalación", role: "Capacitacion", img: "../../../../../public/servicios/capacitacion1.jpg" },
-  { name: "Instalación en el pais", role: "Servicio", img: "../../../../../public/servicios/instalacionServicio1.jpg" },
-  { name: "Asesoria", role: "Servicio", img: "../../../../../public/servicios/asesoria1.jpg" },
-  { name: "Soporte tecnico", role: "Servicio", img: "../../../../../public/servicios/soporteTecnico1.jpg" },
-  { name: "Material incluido", role: "Servicio", img: "../../../../../public/servicios/marterial1.jpg" },
-  { name: "Instalacion certificada", role: "Servicio", img: "../../../../../public/servicios/intalacionServicio2.jpg" },
-  { name: "Certificados de intalación", role: "Certificados", img: "../../../../../public/servicios/certificados.jpg" },
+  { name: "Instalación", role: "Servicio", img: servicio1 },
+  { name: "Capacitación de instalación", role: "Capacitación", img: capacitacion1 },
+  { name: "Instalación en el país", role: "Servicio", img: instalacion1 },
+  { name: "Asesoría", role: "Servicio", img: asesoria1 },
+  { name: "Soporte técnico", role: "Servicio", img: soporte1 },
+  { name: "Material incluido", role: "Servicio", img: material1 },
+  { name: "Instalación certificada", role: "Servicio", img: instalacion2 },
+  { name: "Certificados de instalación", role: "Certificados", img: certificados },
 ];
+
+
 
 const ServicesCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
