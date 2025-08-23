@@ -7,7 +7,7 @@ const AnimatedCard = ({ videoSrc, title, description }) => {
       {/* Logo de la empresa y botón WhatsApp */}
       <div className="flex flex-col items-center justify-center w-full md:w-[350px] h-[500px] gap-4">
         <img
-          src={`${import.meta.env.BASE_URL}logo.png`}
+          src={`${import.meta.env.BASE_URL}/logo.png`}
           alt="Logo de la empresa"
           className="object-contain w-72 md:w-72 h-72 md:h-72"
         />

@@ -38,7 +38,7 @@ const Sidebar = ({ isOpen }) => {
       <div className="flex items-center justify-center h-20 transition-all duration-300 ease-in-out">
         {isOpen && (
           <img
-            src={`${import.meta.env.BASE_URL}logo.png`}
+            src={`${import.meta.env.BASE_URL}/logo.png`}
             alt="Logo"
             className="object-contain h-20 mt-4 w-22"
           />
