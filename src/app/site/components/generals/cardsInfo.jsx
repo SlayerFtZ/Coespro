@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
+import { BiDotsVerticalRounded } from "react-icons/bi";
 
 const cardsData = [
   {
-    color: "from-blue-200 to-blue-200",
+    color: "from-blue-200 to-green-200",
     date: "Enero 09, 2025",
     title: "Equipos Certificados",
     description:
@@ -11,7 +12,7 @@ const cardsData = [
     image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg",
   },
   {
-    color: "from-blue-200 to-blue-200",
+    color: "from-green-200 to-blue-200",
     date: "Febrero 05, 2021",
     title: "Capacitación Incluida",
     description:
@@ -20,7 +21,7 @@ const cardsData = [
     image: "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg",
   },
   {
-    color: "from-blue-200 to-blue-200",
+    color: "from-blue-200 to-green-200",
     date: "Enero 2025",
     title: "Equipo Adaptable",
     description:
@@ -29,7 +30,7 @@ const cardsData = [
     image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4hOlkrhSrOa12pXnpAvXAzkc-j-Ptk1tcCcgg0pyH4IKARVxSbFGHcRnXSa9uReXT0ho&usqp=CAU",
   },
   {
-    color: "from-blue-200 to-blue-200",
+    color: "from-green-200 to-blue-200",
     date: "Febrero 05, 2021",
     title: "Soporte Técnico",
     description:
@@ -38,7 +39,7 @@ const cardsData = [
     image: "https://icorp.com.mx/wp-content/uploads/2023/09/soporte-tecnico-de-calidad-scaled.webp",
   },
   {
-    color: "from-blue-200 to-blue-200",
+    color: "from-blue-200 to-green-200",
     date: "Enero 2025",
     title: "Imagen de Marca Positiva",
     description:
@@ -47,7 +48,7 @@ const cardsData = [
     image: "https://sakkanacomunicaciones.com/wp-content/uploads/2021/12/reputacion-de-marca.jpeg",
   },
   {
-    color: "from-blue-200 to-blue-200",
+    color: "from-green-200 to-blue-200",
     date: "Febrero 05, 2021",
     title: "Rentabilidad Diaria",
     description:
@@ -55,7 +56,6 @@ const cardsData = [
     progress: 100,
     image: "https://www.unir.net/wp-content/uploads/2021/02/Inversion.png",
   },
-  // ... resto de tus cards
 ];
 
 const Card = ({ card, reverse }) => {
@@ -63,7 +63,7 @@ const Card = ({ card, reverse }) => {
     <div
       className={`bg-gradient-to-br ${card.color} rounded-xl shadow-lg p-5 flex flex-col md:flex-row ${
         reverse ? "md:flex-row-reverse" : ""
-      } items-center text-black font-semibold`}
+      } items-center text-black font-semibold transform transition-transform duration-500 ease-out hover:-translate-y-3 hover:scale-105 hover:shadow-2xl`}
     >
       {/* Contenedor de imagen */}
       <div className="w-full mb-4 md:w-1/2 md:mb-0">
@@ -77,29 +77,18 @@ const Card = ({ card, reverse }) => {
       {/* Contenedor de información */}
       <div className="w-full md:w-1/2 md:px-6">
         <div className="flex items-center justify-between mb-3">
-          <span className="text-xl font-semibold">{card.date}</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              fillRule="evenodd"
-              d="M10.5 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0 1 1 3 0 1.5 1.5 0 0 1-3 0Zm0 6a1.5 1.5 0"
-              clipRule="evenodd"
-            />
-          </svg>
+          <span className="text-xl font-semibold font-josefin">{card.date}</span>
+          <BiDotsVerticalRounded className="w-6 h-6" />
         </div>
-        <h3 className="text-2xl font-bold">{card.title}</h3>
-        <p className="mt-2 text-lg">{card.description}</p>
+        <h3 className="text-2xl font-bold font-josefin">{card.title}</h3>
+        <p className="mt-2 text-lg font-josefin">{card.description}</p>
         <div className="flex items-center justify-between mt-2 text-xl">
-          <span >Nivel de satisfacción</span>
-          <span>{card.progress}%</span>
+          <span className="font-josefin">Nivel de satisfacción</span>
+          <span className="font-josefin">{card.progress}%</span>
         </div>
         <div className="w-full h-2 mt-1 rounded-full bg-white/30">
           <div
-            className="h-2 bg-blue-700 rounded-full"
+            className="h-2 transition-all duration-700 ease-out bg-blue-700 rounded-full"
             style={{ width: `${card.progress}%` }}
           ></div>
         </div>

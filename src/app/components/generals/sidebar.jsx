@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   BiHome,
   BiStore,
@@ -13,6 +13,14 @@ import {
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [openSubmenu, setOpenSubmenu] = useState(null);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+
+  // Detecta cambio de tamaño de pantalla para saber si es móvil o escritorio
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const menuItems = [
     { name: "Inicio", icon: BiHome },
@@ -36,12 +44,17 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     { name: "Aviso de privacidad", icon: BiBell },
   ];
 
-  // Cierra el menú automáticamente en móviles
   const handleMenuClick = (hasSubmenu, index) => {
     if (hasSubmenu) {
       setOpenSubmenu(openSubmenu === index ? null : index);
-    } else if (window.innerWidth < 640) {
-      toggleSidebar(); // Cierra en móvil
+    } else if (isMobile) {
+      toggleSidebar(); // Solo cierra en móvil
+    }
+  };
+
+  const handleOverlayClick = () => {
+    if (isMobile && isOpen) {
+      toggleSidebar();
     }
   };
 
@@ -55,10 +68,18 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         ☰
       </button>
 
+      {/* Overlay en móvil */}
+      {isMobile && isOpen && (
+        <div
+          className="fixed inset-0 z-30 bg-black/50"
+          onClick={handleOverlayClick}
+        />
+      )}
+
       <div
         className={`fixed sm:relative top-0 left-0 h-full z-40
           flex flex-col bg-white overflow-hidden rounded-r-3xl shadow-md transition-all duration-300 ease-in-out
-          ${isOpen ? "translate-x-0" : "-translate-x-full sm:translate-x-0"}
+          ${isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : ""}
           ${isOpen ? "w-56" : "w-16"}
         `}
       >
@@ -102,7 +123,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                       <li
                         key={subIndex}
                         className="flex items-center h-12 text-sm hover:text-blue-800"
-                        onClick={() => window.innerWidth < 640 && toggleSidebar()}
+                        onClick={() => isMobile && toggleSidebar()}
                       >
                         {subItem}
                       </li>

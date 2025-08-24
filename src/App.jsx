@@ -10,6 +10,8 @@ import CardSection from "./app/site/components/generals/cardsInfo";
 export default function App() {
   const [isOpen, setIsOpen] = useState(true);
 
+  const toggleSidebar = () => setIsOpen(!isOpen); // ✅ Función para Sidebar
+
   return (
     <div className="flex flex-col min-h-screen">
       {/* TopBar */}
@@ -17,14 +19,12 @@ export default function App() {
 
       <div className="flex flex-1">
         {/* Sidebar */}
-        <Sidebar isOpen={isOpen} />
+        <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
 
         {/* Contenido principal */}
         <div className="flex-1 p-8">
           {/* Promo */}
-          <h1 className="mb-6 text-4xl font-bold text-gray-800">
-            
-          </h1>
+          <h1 className="mb-6 text-4xl font-bold text-gray-800"></h1>
           <AnimatedCard
             videoSrc={`${import.meta.env.BASE_URL}/video/promo.mp4`}
             title="Promo del mes"
@@ -34,8 +34,9 @@ export default function App() {
           {/* Carrusel */}
           <h2 className="mt-12 mb-6 text-3xl font-bold text-gray-800"></h2>
           <ServicesCarousel />
+
           <h2 className="mt-12 mb-6 text-3xl font-bold text-gray-800"></h2>
-          <CardSection></CardSection>
+          <CardSection />
         </div>
       </div>
 
