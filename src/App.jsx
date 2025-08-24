@@ -10,7 +10,7 @@ import CardSection from "./app/site/components/generals/cardsInfo";
 export default function App() {
   const [isOpen, setIsOpen] = useState(true);
 
-  const toggleSidebar = () => setIsOpen(!isOpen); // ✅ Función para Sidebar
+  const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
     <div className="flex flex-col min-h-screen">

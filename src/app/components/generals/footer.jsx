@@ -1,14 +1,16 @@
 const Footer = () => {
   return (
     <footer className="bg-blue-100">
-      <div className="max-w-screen-xl px-4 py-10 mx-auto space-y-8 sm:px-6 lg:px-8">
-        {/* Redes sociales */}
+      <div className="max-w-screen-xl px-4 py-8 mx-auto space-y-8 sm:px-6 lg:px-8">
+        
+        {/* Redes sociales responsivas */}
         <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 lg:gap-14">
+          
           {/* Facebook */}
           <a href="#" className="text-blue-500 hover:text-blue-600">
             <span className="sr-only">Facebook</span>
             <svg
-              className="w-10 h-10 sm:w-12 sm:h-12"
+              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
               fill="currentColor"
               viewBox="0 0 24 24"
             >
@@ -19,15 +21,9 @@ const Footer = () => {
           {/* Instagram */}
           <a href="#" className="text-pink-500 hover:text-pink-400">
             <span className="sr-only">Instagram</span>
-            <svg className="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 24 24">
+            <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" viewBox="0 0 24 24">
               <defs>
-                <linearGradient
-                  id="instaGradient"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="0%"
-                >
+                <linearGradient id="instaGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#f58529" />
                   <stop offset="50%" stopColor="#dd2a7b" />
                   <stop offset="100%" stopColor="#8134af" />
@@ -43,7 +39,7 @@ const Footer = () => {
           {/* TikTok */}
           <a href="#" className="text-black hover:text-gray-700">
             <span className="sr-only">TikTok</span>
-            <svg className="w-10 h-10 sm:w-12 sm:h-12" viewBox="0 0 100 100">
+            <svg className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12" viewBox="0 0 100 100">
               <path
                 fill="#000"
                 d="M87.215,56.71C88.35,54.555,89,52.105,89,49.5c0-6.621-4.159-12.257-10.001-14.478C78.999,35.015,79,35.008,79,35c0-11.598-9.402-21-21-21c-9.784,0-17.981,6.701-20.313,15.757C36.211,29.272,34.638,29,33,29c-7.692,0-14.023,5.793-14.89,13.252C12.906,43.353,9,47.969,9,53.5C9,59.851,14.149,65,20.5,65c0.177,0,0.352-0.012,0.526-0.022C21.022,65.153,21,65.324,21,65.5C21,76.822,30.178,86,41.5,86c6.437,0,12.175-2.972,15.934-7.614C59.612,80.611,62.64,82,66,82c4.65,0,8.674-2.65,10.666-6.518C77.718,75.817,78.837,76,80,76c6.075,0,11-4.925,11-11C91,61.689,89.53,58.727,87.215,56.71z"
@@ -55,18 +51,12 @@ const Footer = () => {
           <a href="#" className="inline-block">
             <span className="sr-only">YouTube</span>
             <svg
-              className="w-10 h-10 sm:w-12 sm:h-12"
+              className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12"
               aria-hidden="true"
               viewBox="0 0 24 24"
             >
               <defs>
-                <linearGradient
-                  id="youtubeGradient"
-                  x1="0%"
-                  y1="0%"
-                  x2="100%"
-                  y2="0%"
-                >
+                <linearGradient id="youtubeGradient" x1="0%" y1="0%" x2="100%" y2="0%">
                   <stop offset="0%" stopColor="#FF0000" />
                   <stop offset="100%" stopColor="#FF3333" />
                 </linearGradient>
@@ -80,7 +70,7 @@ const Footer = () => {
         </div>
 
         {/* Texto de derechos */}
-        <p className="mt-6 text-sm font-bold leading-6 text-center text-blue-500 sm:text-base">
+        <p className="text-xs font-bold leading-6 text-center text-blue-500 sm:text-sm md:text-base">
           © 2025 Coespro. Derechos reservados.
         </p>
       </div>

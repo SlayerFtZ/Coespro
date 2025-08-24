@@ -9,15 +9,15 @@ import {
   BiShield,
   BiUserVoice,
   BiBell,
+  BiX,
 } from "react-icons/bi";
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const [openSubmenu, setOpenSubmenu] = useState(null);
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  // Detecta cambio de tamaño de pantalla para saber si es móvil o escritorio
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -48,27 +48,17 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     if (hasSubmenu) {
       setOpenSubmenu(openSubmenu === index ? null : index);
     } else if (isMobile) {
-      toggleSidebar(); // Solo cierra en móvil
-    }
-  };
-
-  const handleOverlayClick = () => {
-    if (isMobile && isOpen) {
       toggleSidebar();
     }
   };
 
+  const handleOverlayClick = () => {
+    if (isMobile && isOpen) toggleSidebar();
+  };
+
   return (
     <>
-      {/* Botón hamburguesa solo en móviles */}
-      <button
-        className="fixed z-50 p-2 text-white bg-gray-800 rounded-md top-4 left-4 sm:hidden"
-        onClick={toggleSidebar}
-      >
-        ☰
-      </button>
-
-      {/* Overlay en móvil */}
+      {/* Overlay en móvil/tablet */}
       {isMobile && isOpen && (
         <div
           className="fixed inset-0 z-30 bg-black/50"
@@ -77,19 +67,29 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
       )}
 
       <div
-        className={`fixed sm:relative top-0 left-0 h-full z-40
-          flex flex-col bg-white overflow-hidden rounded-r-3xl shadow-md transition-all duration-300 ease-in-out
-          ${isMobile ? (isOpen ? "translate-x-0" : "-translate-x-full") : ""}
-          ${isOpen ? "w-56" : "w-16"}
+        className={`fixed md:relative top-0 left-0 h-full z-40
+          flex flex-col bg-white overflow-y-auto rounded-r-3xl shadow-md transition-transform duration-300 ease-in-out
+          ${isMobile ? `w-full max-w-xs ${isOpen ? "translate-x-0" : "-translate-x-full"}` : ""}
+          ${!isMobile ? (isOpen ? "w-56" : "w-16") : ""}
         `}
       >
+        {/* Botón X solo en móvil */}
+        {isMobile && (
+          <button
+            className="absolute text-gray-700 top-4 right-4 hover:text-gray-900"
+            onClick={toggleSidebar}
+          >
+            <BiX size={28} />
+          </button>
+        )}
+
         {/* Logo */}
-        <div className="flex items-center justify-center h-20 transition-all duration-300 ease-in-out">
+        <div className="flex items-center justify-center h-20 mt-8 transition-all duration-300 ease-in-out">
           {isOpen && (
             <img
               src={`${import.meta.env.BASE_URL}/logo.png`}
               alt="Logo"
-              className="object-contain h-20 mt-4 w-22"
+              className="object-contain w-20 h-16 sm:h-20 sm:w-24"
             />
           )}
         </div>
@@ -98,7 +98,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
         <ul className="flex flex-col py-4">
           {menuItems.map((item, index) => {
             const Icon = item.icon;
-            const hasSubmenu = item.submenu && item.submenu.length > 0;
+            const hasSubmenu = item.submenu?.length > 0;
 
             return (
               <li key={index}>
@@ -110,7 +110,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
                     <Icon size={25} />
                   </span>
                   {isOpen && (
-                    <span className="flex-1 text-sm font-medium text-left whitespace-nowrap">
+                    <span className="flex-1 text-sm font-medium text-left truncate whitespace-nowrap">
                       {item.name}
                     </span>
                   )}
@@ -118,11 +118,11 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 
                 {/* Submenú */}
                 {hasSubmenu && openSubmenu === index && isOpen && (
-                  <ul className="flex flex-col mt-2 ml-6 text-blue-500 transition-all duration-300 ease-in-out sm:ml-12">
+                  <ul className="flex flex-col mt-2 ml-6 text-blue-500 transition-all duration-300 ease-in-out sm:ml-8">
                     {item.submenu.map((subItem, subIndex) => (
                       <li
                         key={subIndex}
-                        className="flex items-center h-12 text-sm hover:text-blue-800"
+                        className="flex items-center h-10 text-xs truncate sm:text-sm hover:text-blue-800"
                         onClick={() => isMobile && toggleSidebar()}
                       >
                         {subItem}
