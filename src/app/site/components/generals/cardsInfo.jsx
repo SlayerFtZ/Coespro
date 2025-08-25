@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { BiDotsVerticalRounded } from "react-icons/bi";
-
+import { motion } from "framer-motion";
 const cardsData = [
   {
     color: "from-blue-200 to-green-200",
@@ -60,12 +60,15 @@ const cardsData = [
 
 const Card = ({ card, reverse }) => {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      viewport={{ once: false, amount: 0.3 }}
       className={`bg-gradient-to-br ${card.color} rounded-xl shadow-lg p-5 flex flex-col md:flex-row ${
         reverse ? "md:flex-row-reverse" : ""
       } items-center text-black font-semibold transform transition-transform duration-500 ease-out hover:-translate-y-3 hover:scale-105 hover:shadow-2xl`}
     >
-      {/* Contenedor de imagen */}
       <div className="w-full mb-4 md:w-1/2 md:mb-0">
         <img
           src={card.image}
@@ -73,8 +76,6 @@ const Card = ({ card, reverse }) => {
           className="object-cover w-full h-full rounded-lg"
         />
       </div>
-
-      {/* Contenedor de información */}
       <div className="w-full md:w-1/2 md:px-6">
         <div className="flex items-center justify-between mb-3">
           <span className="text-xl font-semibold font-josefin">{card.date}</span>
@@ -93,11 +94,10 @@ const Card = ({ card, reverse }) => {
           ></div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
-// ✅ PropTypes
 Card.propTypes = {
   card: PropTypes.shape({
     color: PropTypes.string.isRequired,

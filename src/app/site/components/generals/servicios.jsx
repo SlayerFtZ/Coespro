@@ -20,8 +20,6 @@ const teamMembers = [
   { name: "Certificados de instalación", role: "Certificados", img: certificados },
 ];
 
-
-
 const ServicesCarousel = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
@@ -75,37 +73,35 @@ const ServicesCarousel = () => {
         </button>
 
         {/* Carousel Track */}
-<div className="relative w-full h-[500px] flex items-center justify-center perspective-1000 space-x-4">
-  {teamMembers.map((member, i) => {
-    let positionClass = "hidden";
-    if (i === currentIndex) positionClass = "center z-10 scale-105";
-    else if (i === (currentIndex + 1) % teamMembers.length)
-      positionClass = "right-1 z-5 scale-90 opacity-90";
-    else if (i === (currentIndex + 2) % teamMembers.length)
-      positionClass = "right-2 z-1 scale-80 opacity-70";
-    else if (i === (currentIndex - 1 + teamMembers.length) % teamMembers.length)
-      positionClass = "left-1 z-5 scale-90 opacity-90";
-    else if (i === (currentIndex - 2 + teamMembers.length) % teamMembers.length)
-      positionClass = "left-2 z-1 scale-80 opacity-70";
+        <div className="relative w-full h-[550px] md:h-[600px] flex items-center justify-center perspective-1000">
+          {teamMembers.map((member, i) => {
+            let positionClass = "hidden";
 
-    return (
-      <div
-        key={i}
-        className={`absolute w-64 md:w-72 rounded-2xl shadow-lg overflow-hidden transition-all duration-700 transform ${positionClass} cursor-pointer`}
-        onClick={() => openModal(i)}
-      >
-        <div className="w-full h-[400px]">
-          <img
-            src={member.img}
-            alt={member.name}
-            className="object-cover w-full h-full rounded-2xl"
-          />
+            if (i === currentIndex) positionClass = "center z-20 scale-110 opacity-100";
+            else if (i === (currentIndex + 1) % teamMembers.length)
+              positionClass = "right-1 z-10 scale-95 opacity-100";
+            else if (i === (currentIndex + 2) % teamMembers.length)
+              positionClass = "right-2 z-0 scale-85 opacity-80";
+            else if (i === (currentIndex - 1 + teamMembers.length) % teamMembers.length)
+              positionClass = "left-1 z-10 scale-95 opacity-100";
+            else if (i === (currentIndex - 2 + teamMembers.length) % teamMembers.length)
+              positionClass = "left-2 z-0 scale-85 opacity-80";
+
+            return (
+              <div
+                key={i}
+                className={`absolute w-72 md:w-80 lg:w-96 rounded-2xl shadow-xl overflow-hidden transition-all duration-700 transform ${positionClass} cursor-pointer`}
+                onClick={() => openModal(i)}
+              >
+                <img
+                  src={member.img}
+                  alt={member.name}
+                  className="object-cover w-full h-[450px] md:h-[500px] lg:h-[550px] rounded-2xl"
+                />
+              </div>
+            );
+          })}
         </div>
-      </div>
-    );
-  })}
-</div>
-
 
         {/* Right Arrow */}
         <button
@@ -147,9 +143,8 @@ const ServicesCarousel = () => {
         >
           <div
             className="relative w-full max-w-3xl p-4 bg-white rounded-lg"
-            onClick={(e) => e.stopPropagation()} // evita cerrar al hacer click dentro
+            onClick={(e) => e.stopPropagation()}
           >
-            {/* Botón cerrar */}
             <button
               className="absolute text-2xl font-bold text-black top-2 right-2 hover:text-red-500"
               onClick={closeModal}
@@ -157,14 +152,12 @@ const ServicesCarousel = () => {
               ×
             </button>
 
-            {/* Imagen modal */}
             <img
               src={teamMembers[modalIndex].img}
               alt={teamMembers[modalIndex].name}
               className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
             />
 
-            {/* Info */}
             <h2 className="mt-4 text-xl font-bold text-blue-900">
               {teamMembers[modalIndex].name}
             </h2>
