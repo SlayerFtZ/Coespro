@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 import {
   BiHome,
   BiStore,
-  BiUserCheck,
-  BiPhoneCall,
   BiChat,
   BiShield,
   BiUserVoice,
@@ -38,7 +36,7 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
     "Política de Facturación": "/politica-facturacion",
     "Política de Envíos": "/politica-envios",
     "Política de Cobro": "/politica-cobro",
-    "Preguntas frecuentes": "/faq",
+    "Preguntas frecuentes": "/politica-fqa",
     "Aviso de privacidad": "/aviso-privacidad",
   };
 
@@ -46,8 +44,6 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
      { name: "Bienvenida", icon: BiHome },
     { name: "Inicio", icon: BiHome },
     { name: "Tienda", icon: BiStore },
-    { name: "Nosotros", icon: BiUserCheck },
-    { name: "Contactos", icon: BiPhoneCall },
     { name: "Blog", icon: BiChat },
     {
       name: "Políticas",

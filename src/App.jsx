@@ -6,7 +6,16 @@ import Footer from "./app/components/generals/footer";
 import HomeBody from "./app/site/pages/homeBoby";
 import Bienvenida from "./app/site/pages/bienvenidad";
 import PoliticaTiendaOnline from "./app/site/pages/politicaTiendaOnline";
+import PoliticaPromociones from "./app/site/pages/politicaPromociones";
+import PoliticaDevoluciones from "./app/site/pages/politicaDevoluciones";
+import PoliticaFacturacion from "./app/site/pages/politicaFacturacion";
+import PoliticaEnvios from "./app/site/pages/politicaEnvios";
+import PoliticaCobro from "./app/site/pages/politcaCobro";
+import AvisoPrivacidad from "./app/site/pages/avisoPrivacidad";
 import ProductCard from "./app/features/products/pages/tienda";
+import BlogLayout from "./app/site/pages/blog"
+import FQA from "./app/site/pages/preguntasFrecuentes";
+
 
 export default function App() {
   const [isOpen, setIsOpen] = useState(true);
@@ -48,7 +57,17 @@ export default function App() {
             <Route path="/" element={<Bienvenida />} />
             <Route path="/inicio" element={<HomeBody />} />
             <Route path="/politica-tienda" element={<PoliticaTiendaOnline />} />
+            <Route path="/politica-promociones" element={<PoliticaPromociones/>} />
+            <Route path="/politica-devoluciones" element={<PoliticaDevoluciones />} />
+            <Route path="/politica-facturacion" element={<PoliticaFacturacion />} />
+            <Route path="/politica-envios" element={<PoliticaEnvios />} />
+            <Route path="/politica-cobro" element={<PoliticaCobro />} />
+            <Route path="/aviso-privacidad" element={<AvisoPrivacidad />} />
+            <Route path="/politica-fqa" element={<FQA />} />
+             <Route path="/blog" element={< BlogLayout/>} />
             <Route path="/product-card" element={<ProductCard />} />
+            
+
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </div>
